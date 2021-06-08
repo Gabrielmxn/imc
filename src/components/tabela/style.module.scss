@@ -8,17 +8,48 @@
   margin-bottom: 500px;
   text-align: center;
   border-radius: 5px;
+  
+  .option{
+    display: flex;
+    background-color: #fff;
+    padding: 10px 0px;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    gap: 20px;
+    div:first-child {
+      margin-left: 20px;
+    }
+
+    select {
+      -webkit-appearance: none;
+      border-radius: 3px;
+      padding-left: 15%;
+      padding-right: 15%;
+      width: 100px;
+      outline: none;
+      option {
+        padding: 0 auto;
+        text-align: center;
+      }
+   }
+
+    span {
+      margin-right: 8px;
+    }
+  
+  }
 
   .tabela {
+    width: 100%;
+    border-spacing: 0 0.5rem;
     background-color: #fff;
     padding: 10px 20px;
-    border-radius: 5px;
-    width: 100%;
+    border-radius: 0px 0px 5px 5px;
     align-items: center;
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 10px;
-
+   
     thead tr th {
       padding: 20px;
     }
