@@ -8,9 +8,9 @@ const Form = (props) => {
 function test(event){
   setlistForm({...listForm, [event.target.name]: event.target.value});
 }
-async function  calcularImc(){
+function  calcularImc(){
   let imc =  listForm.peso / (listForm.altura * listForm.altura);
-  return await {...listForm, valueImc: imc.toFixed(2)}
+  return {...listForm, valueImc: imc.toFixed(2)}
 }
 
 async function handleSubmit(event) {
@@ -19,9 +19,10 @@ async function handleSubmit(event) {
   let newList = Array.prototype.slice.call(formw);
   event.preventDefault();
   if(newList.every(element => element.value !== "")){
-      let novlist = await calcularImc()
-      let lisComplet = await verificarCategoria(novlist);
+      let novlist = calcularImc()
+      let lisComplet =  verificarCategoria(novlist);
       setlistForm(lisComplet)
+      console.log(lisComplet)
       props.setFormListTest(lisComplet)
       setlistForm(init)
   }
@@ -29,22 +30,27 @@ async function handleSubmit(event) {
 }
 
   function verificarCategoria(value){
+    console.log(value);
     let categoriaMessage;
-    if(value.valueImc <= 18.4){
+    console.log("oi");
+    console.log(value.valueImc);
+
+    if((value.valueImc <= 18.4)){
       categoriaMessage  = "Abaixo do peso";
-    }else if(value.valueImc >= 18.5 && value.valorImc <= 24.9){
+    }else if((value.valueImc >= 18.5) && (value.valueImc <= 24.9)){
       categoriaMessage = "Peso normal";
-    }else if(value.valueImc >= 18.5 && value.valorImc <= 24.9){
+    }else if((value.valueImc >= 18.5) && (value.valueImc <= 24.9)){
       categoriaMessage = "Sobrepeso";
-    }else if(value.valueImc >= 25.0 && value.valorImc <= 29.9){
+    }else if((value.valueImc >= 25.0) && (value.valueImc <= 29.9)){
       categoriaMessage = "Obesidade grau I";
-    }else if(value.valueImc >= 30.0 && value.valorImc <= 34.9){
+    }else if((value.valueImc >= 30.0) && (value.valueImc <= 34.9)){
       categoriaMessage = "Obesidade grau II";
-    }else if(value.valueImc >= 35.0 && value.valorImc <= 39.9){
+    }else if((value.valueImc >= 35.0) && (value.valueImc <= 39.9)){
       categoriaMessage = "Obesidade grau III";
-    }else {
+    }else if((value.valueImc >= 40)){
       categoriaMessage = "Obesidade grau III";
     }
+   
 
     return {...value, categoria: categoriaMessage}
   }
