@@ -1,9 +1,6 @@
 export function verificarCategoria(value){
-  console.log(value);
   let categoriaMessage;
-  console.log("oi");
-  console.log(value.valueImc);
-
+  
   if((value.valueImc <= 18.4)){
     categoriaMessage  = "Abaixo do peso";
   }else if((value.valueImc >= 18.5) && (value.valueImc <= 24.9)){

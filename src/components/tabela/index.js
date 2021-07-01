@@ -98,7 +98,7 @@ const Tabela = props => {
                   <td>{`${item.altura} m`}</td>
                   <td>{`${item.valueImc}`}</td>
                   <td>{item.categoria}</td>
-                  <td className={Style.test}><MdDeleteForever cursor="pointer" y='5' size='17px'/></td>
+                  <td className={Style.test}><MdDeleteForever  y='5' size='17px'/></td>
                 </tr>
               )    
               })
