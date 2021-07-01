@@ -1,22 +1,30 @@
-import { useEffect, useState} from 'react';
-import Tabela from '../../components/tabela'
-import Form from '../../components/form'
+export function verificarCategoria(value){
+  console.log(value);
+  let categoriaMessage;
+  console.log("oi");
+  console.log(value.valueImc);
 
-
-const Imc = (props) => {
-  const [formList, setFormList] = useState();
-  function calcularImc(element){
-    console.log(element)
-    //IMC = Peso / (Altura*Altura)
-    //setFormList(element);
+  if((value.valueImc <= 18.4)){
+    categoriaMessage  = "Abaixo do peso";
+  }else if((value.valueImc >= 18.5) && (value.valueImc <= 24.9)){
+    categoriaMessage = "Peso normal";
+  }else if((value.valueImc >= 18.5) && (value.valueImc <= 24.9)){
+    categoriaMessage = "Sobrepeso";
+  }else if((value.valueImc >= 25.0) && (value.valueImc <= 29.9)){
+    categoriaMessage = "Obesidade grau I";
+  }else if((value.valueImc >= 30.0) && (value.valueImc <= 34.9)){
+    categoriaMessage = "Obesidade grau II";
+  }else if((value.valueImc >= 35.0) && (value.valueImc <= 39.9)){
+    categoriaMessage = "Obesidade grau III";
+  }else if((value.valueImc >= 40)){
+    categoriaMessage = "Obesidade grau III";
   }
+ 
 
-  return(
-    <>
-    <Form calcular={calcularImc}/>
-    <Tabela />
-    </>
-  )
+  return {...value, categoria: categoriaMessage}
 }
 
-export default Imc;
+export function  calcularImc(listForm){
+  let imc =  listForm.peso / (listForm.altura * listForm.altura);
+  return {...listForm, valueImc: imc.toFixed(2)}
+}

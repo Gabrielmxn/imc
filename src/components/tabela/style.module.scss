@@ -5,10 +5,11 @@
   padding: 30px;
   margin: 0 auto;
   margin-top: 150px;
-  margin-bottom: 500px;
+  margin-bottom: 50px;
   text-align: center;
   border-radius: 5px;
-  
+  background-color: #fff;
+ 
   .option{
     display: flex;
     background-color: #fff;
@@ -21,12 +22,8 @@
     }
 
     select {
-      -webkit-appearance: none;
-      border-radius: 3px;
-      padding-left: 15%;
-      padding-right: 15%;
-      width: 100px;
       outline: none;
+      
       option {
         padding: 0 auto;
         text-align: center;
@@ -43,7 +40,7 @@
     width: 100%;
     border-spacing: 0 0.5rem;
     background-color: #fff;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 0px 0px 5px 5px;
     align-items: center;
     text-align: center;
@@ -51,7 +48,7 @@
     border-spacing: 0 10px;
    
     thead tr th {
-      padding: 20px;
+      padding: 10px;
     }
 
     tbody {
@@ -67,19 +64,46 @@
       }
       tr td:last-child {
         border-bottom-right-radius: 5px; 
+        
       }
       tr {
         border-radius: 10px;
-        background-color: #016795;
-
+         td{
+          background-color: #016795;
+         }
+        
         td.test {
-          display: grid;
-          justify-content: center;
-          align-items: center;
-          padding: 10px 0;
-          
+          display: flex;
+          text-align: center;  
+          padding: 20px;
+          svg{
+            flex: 1;
+          }
         }
       } 
     }
   }
 }
+
+@media screen and (max-width: 800px){
+  .container {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0px;
+  }
+
+  .table {
+    display: block;
+    width: 100%;
+  }
+  .tabele{
+    display: block;
+    width: 100%;
+  }
+  .option{ 
+    display: block;
+    width: 100%;
+  }
+}
+

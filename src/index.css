@@ -6,7 +6,11 @@ html, body, #root {
   box-sizing: border-box;
   background-color: #1B2431;
   height: 100%;
+  width: 100vw;
   font-family: 'Baloo 2', cursive;
 }
 
 
+#root{
+  overflow-x: hidden;
+}

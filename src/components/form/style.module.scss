@@ -72,3 +72,9 @@ $color-white: #FFFFFF;
     }
   }
 }
+@media screen and (max-width: 600px){
+  .formDiv {
+    width: 100px;
+      height: 100px;
+  }
+}
