@@ -1,5 +1,5 @@
-import orderSelectionSort from '../methodAndOrder/sort'
-import orderBolha from '../methodAndOrder/bolha'
+import orderSelectionSort from './selectionSort'
+import orderBolha from './bubbleSort'
 
 const isMethod = {
   selectionSort: orderSelectionSort,
