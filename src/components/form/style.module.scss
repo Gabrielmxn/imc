@@ -63,12 +63,14 @@ $color-white: #FFFFFF;
         box-shadow: 0 0 5px 1px #1B2431;
        background-color: #1E488F;
        transition: background, box-shadow 0.5s ease-out;
+
+       &:hover{
+        background-color: #1B2431;
+        box-shadow: 0 0 5px 2px #1B2431;
+       
+      }
      }
-     button:hover{
-       background-color: #1B2431;
-       box-shadow: 0 0 5px 2px #1B2431;
-      
-     }
+    
     }
   }
 }
