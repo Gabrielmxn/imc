@@ -8,11 +8,13 @@ const Form = (props) => {
   const [valueId, setValueId] = useState(0);
 
 function test(event){
+  console.log(event.target.value)
   setlistForm({
     ...listForm, 
     [event.target.name]: event.target.name === 'nome' && event.target.value 
     ? event.target.value[0].toUpperCase()  +  event.target.value.substr(1)
-    :  event.target.value > 0 && event.target.value,
+    :  event.target.value >= 0 || event.target.value !== "" 
+    ? event.target.value : event.target.value,
     id: valueId});
 }
 
