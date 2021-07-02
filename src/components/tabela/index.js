@@ -19,11 +19,8 @@ const Tabela = props => {
     setListTest(newArrayOrder);
   }
   async function orderT(){
-    console.log(listTest)
     const variavel = await methodWithOrder(listTest, method, order)
-    console.log(listTest)
     //setListTest(variavel)
-    console.log(variavel)
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -56,7 +53,7 @@ const Tabela = props => {
                 name="select"
                 value={method}>
                 <option value="selectionSort">Selection Sort</option>
-                <option value="insertionSort" disabled>Insertion Sort</option>
+                <option value="insertionSort">Insertion Sort</option>
                 <option value="quickSort" disabled>Quick sort</option>
                 <option value="mergeSort" disabled>Mergesort</option>
                 <option value="bubbleSort" disabled>Bubble sort</option>

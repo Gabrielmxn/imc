@@ -1,9 +1,11 @@
 import orderSelectionSort from './selectionSort'
 import orderBolha from './bubbleSort'
+import orderInsertionSort from './insertionSort'
 
 const isMethod = {
   selectionSort: orderSelectionSort,
-  bolha: orderBolha
+  bolha: orderBolha,
+  insertionSort: orderInsertionSort,
 }
 
 
