@@ -12,10 +12,20 @@ function test(event){
   setlistForm({
     ...listForm, 
     [event.target.name]: event.target.name === 'nome' && event.target.value 
-    ? event.target.value[0].toUpperCase()  +  event.target.value.substr(1)
+    ? event.target.value[0].toUpperCase()  +  event.target.value.substr(1).toLowerCase()
     :  event.target.value >= 0 || event.target.value !== "" 
     ? event.target.value : event.target.value,
     id: valueId});
+}
+
+function mudarClass(event){
+  event.preventDefault();
+  event.target.parentElement.classList.add(`${Style.ativado}`);
+}
+
+function removerClass(event){
+  event.preventDefault();
+  event.target.parentElement.classList.remove(`${Style.ativado}`);
 }
 
 async function handleSubmit(event) {
@@ -38,9 +48,19 @@ async function handleSubmit(event) {
       <section className={Style.container}>
         <div className={Style.formDiv}>
           <form className={Style.form}>
-            <input type="text" placeholder="Nome" name="nome" value={listForm.nome} onChange={ test } />
-            <input type="number" placeholder="Peso (kg)"  onChange={ test } name="peso" value={listForm.peso} />
-            <input type="number" placeholder="Altura (m)" onChange={ test } name="altura" value={listForm.altura} />
+            <span>
+              <label htmlFor="name" className={Style.formLabel}>Nome</label>
+              <input type="text" id="name" onBlur={removerClass} onFocus={ mudarClass } placeholder="Exemplo: Gabriel" name="nome" value={listForm.nome} onChange={ test } />
+            </span>
+            <span>
+              <label htmlFor="weight" className={Style.formLabel}>Peso</label>
+              <input type="number" id="weight" onBlur={removerClass} onFocus={ mudarClass }  placeholder="Exemplo: 55.4" onChange={ test } name="peso" value={listForm.peso} />
+            </span>
+            <span>
+              <label htmlFor="height" className={Style.formLabel}>Altura</label>
+              <input type="number" id="height" onBlur={removerClass} onFocus={ mudarClass }  placeholder="Exemplo: 1.69" onChange={ test } name="altura" value={listForm.altura} />
+            </span>
+           
             <button onClick={handleSubmit}>Enviar</button>
           </form>
         </div>

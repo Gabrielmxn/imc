@@ -55,7 +55,7 @@ const Tabela = props => {
                 <option value="selectionSort">Selection Sort</option>
                 <option value="insertionSort">Insertion Sort</option>
                 <option value="quickSort" disabled>Quick sort</option>
-                <option value="mergeSort" disabled>Mergesort</option>
+                <option value="mergeSort" disabled>Merge sort</option>
                 <option value="bubbleSort" disabled>Bubble sort</option>
               </select>
             </div>

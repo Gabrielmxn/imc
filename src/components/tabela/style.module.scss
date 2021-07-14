@@ -90,21 +90,14 @@
   .container {
     display: flex;
     width: 100%;
-    overflow-x: auto;
+    overflow-x: scroll;
     padding: 20px 0px;
   }
 
-  .table {
+  .table, .tabele, .option {
     display: block;
     width: 100%;
   }
-  .tabele{
-    display: block;
-    width: 100%;
-  }
-  .option{ 
-    display: block;
-    width: 100%;
-  }
+ 
 }
 
