@@ -91,7 +91,7 @@ const Tabela = props => {
             listTest.map(item => {
               return (
                 <tr key={item.id}>
-                  <td>{item.nome}</td>
+                  <td><span>{item.nome}</span></td>
                   <td>{`${item.peso} kg` }</td>
                   <td>{`${item.altura} m`}</td>
                   <td>{`${item.valueImc}`}</td>

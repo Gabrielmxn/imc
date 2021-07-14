@@ -70,6 +70,7 @@
         border-radius: 10px;
          td{
           background-color: #016795;
+          
          }
         
         td.test {
@@ -101,11 +102,13 @@
 
   }
 
-  .table, .tabele, .option {
-    display: block;
-    //width: 300px;
+  .tabela {
+    table-layout: fixed;
+    
   }
   
-
+  th {
+    width: 160px;
+  }
 }
 
