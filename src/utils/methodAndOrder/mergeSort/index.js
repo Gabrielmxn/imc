@@ -20,7 +20,7 @@ const orderWith = {
 }
 
 
-export default function orderBubbleSort(list, order){
+export default function orderMergeSort(list, order){
   //tamanho do array
   const tamanho = list.length;
   //SELECTION SORT - Ordenar por número da chamada
