@@ -43,6 +43,7 @@ const Tabela = props => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   orderT();
   return (
+    <main className={Style.container2}>
     <section className={Style.container}>
         <div className={Style.table}>
           <div className={Style.option}>
@@ -100,10 +101,12 @@ const Tabela = props => {
               )    
               })
             }
+            
           </tbody>
         </table>
         </div>
     </section>
+    </main>
   )
 }
 

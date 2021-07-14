@@ -87,17 +87,25 @@
 }
 
 @media screen and (max-width: 800px){
-  .container {
+  .container2{
     display: flex;
-    width: 100%;
-    overflow-x: scroll;
-    padding: 20px 0px;
+    
+  }
+
+
+
+  .container {
+    flex: 1;
+    overflow: auto;
+    padding: 0;
+
   }
 
   .table, .tabele, .option {
     display: block;
-    width: 100%;
+    //width: 300px;
   }
- 
+  
+
 }
 
