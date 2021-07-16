@@ -1,24 +1,22 @@
 export function verificarCategoria(value){
-  let categoriaMessage;
+  let categoryMessage;
   
-  if((value.valueImc <= 18.4)){
-    categoriaMessage  = "Abaixo do peso";
-  }else if((value.valueImc >= 18.5) && (value.valueImc <= 24.9)){
-    categoriaMessage = "Peso normal";
-  }else if((value.valueImc >= 18.5) && (value.valueImc <= 24.9)){
-    categoriaMessage = "Sobrepeso";
-  }else if((value.valueImc >= 25.0) && (value.valueImc <= 29.9)){
-    categoriaMessage = "Obesidade grau I";
-  }else if((value.valueImc >= 30.0) && (value.valueImc <= 34.9)){
-    categoriaMessage = "Obesidade grau II";
-  }else if((value.valueImc >= 35.0) && (value.valueImc <= 39.9)){
-    categoriaMessage = "Obesidade grau III";
+  if((value.valueImc < 18.5)){
+    categoryMessage  = "Abaixo do peso";
+  }else if((value.valueImc >= 18.5) && (value.valueImc < 25)){
+    categoryMessage = "Peso normal";
+  }else if((value.valueImc >= 25) && (value.valueImc < 30)){
+    categoryMessage = "Sobrepeso";
+  }else if((value.valueImc >= 30) && (value.valueImc < 35)){
+    categoryMessage = "Obesidade grau I";
+  }else if((value.valueImc >= 35) && (value.valueImc < 40)){
+    categoryMessage = "Obesidade grau II";
   }else if((value.valueImc >= 40)){
-    categoriaMessage = "Obesidade grau III";
+    categoryMessage = "Obesidade grau III";
   }
  
 
-  return {...value, categoria: categoriaMessage}
+  return {...value, categoria: categoryMessage}
 }
 
 export function  calcularImc(listForm){
