@@ -3,7 +3,7 @@
   width: 900px;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
   margin: 0 auto;
   margin-top: 150px;
   margin-bottom: 50px;
@@ -97,15 +97,19 @@
 @media screen and (max-width: 900px){
   .container2{
     display: flex;
-    
-  }
 
+    .container {
+      flex: 1;
+      overflow: auto;
 
-
-  .container {
-    flex: 1;
-    overflow: auto;
-    padding: 0;
+      .tabela {
+        table-layout: fixed;
+        
+      }
+      th {
+        width: 160px;
+      }
+    }
 
     .duration {
       position: relative;
@@ -115,13 +119,11 @@
 
   }
 
-  .tabela {
-    table-layout: fixed;
-    
-  }
+
   
-  th {
-    width: 160px;
-  }
+
+  
+  
+  
 }
 

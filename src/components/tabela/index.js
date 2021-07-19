@@ -102,7 +102,6 @@ const Tabela = props => {
             </thead>
           <tbody>
             {
-            
             listTest.map(item => {
               return (
                 <tr key={item.id}>
@@ -115,8 +114,7 @@ const Tabela = props => {
                 </tr>
               )    
               })
-            }
-            
+            }  
           </tbody>
         </table>
         </div>
