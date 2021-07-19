@@ -4,13 +4,15 @@ $color-white: #FFFFFF;
   background-color: #1B2431;
   width: 100%;
 
+ 
+
   .container {
     background-color: #1E488F;
     width: 100%;
     height: 300px;
     display: flex;
     justify-content: center;
-
+    
     .formDiv {
       position: absolute;
       margin-top: 20px;
@@ -21,6 +23,15 @@ $color-white: #FFFFFF;
       display: grid;
       justify-content: center;
       align-items: center;
+
+      .iconAdd {
+        position: absolute;
+        padding: 10px;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+      }
+     
     }
 
     .form {

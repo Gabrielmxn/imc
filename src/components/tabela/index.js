@@ -1,13 +1,21 @@
 /* eslint-disable no-unused-vars */
-import Style from './style.module.scss';
-import { MdDeleteForever } from "react-icons/md";
+import { 
+  useEffect, 
+  useState} from 'react';
+
 import methodWithOrder from '../../utils/methodAndOrder'
-import { useEffect, useState} from 'react';
+
+import { MdDeleteForever } from "react-icons/md";
+
+import Style from './style.module.scss';
+import Duration from '../duration';
+
 const Tabela = props => {
   const [listTest, setListTest] = useState([]);
   const [method, setMethod] = useState('selectionSort');
   const [order, setOrder] = useState('sortByHeight');
-
+  const [duracao, setDuracao] = useState(0)
+  const [verificarModal, setVerificarModal] = useState(false)
   function methodOrdenacao(e){
     setMethod(e.target.value)
     const newArrayOrder = methodWithOrder(listTest, method, order);
@@ -15,12 +23,16 @@ const Tabela = props => {
   }
   function orderOrdenacao(e){
     setOrder(e.target.value)
+    let inicio = Date.now();
     const newArrayOrder = methodWithOrder(listTest, method, order);
+    let duration = Date.now() - inicio;
+    setDuracao(duration);
+    console.log(duration);
     setListTest(newArrayOrder);
   }
   async function orderT(){
+    console.log("aqui3")
     const variavel = await methodWithOrder(listTest, method, order)
-    //setListTest(variavel)
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -32,17 +44,20 @@ const Tabela = props => {
         let newList = [];
         newList.push(listPeople);
         setListTest([...listTest, ...newList])
+        console.log(listTest);
       }
      
     }
 
     setValue();
    
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.listPeople])
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props])
+  
   orderT();
   return (
+    <>
     <main className={Style.container2}>
     <section className={Style.container}>
         <div className={Style.table}>
@@ -107,6 +122,11 @@ const Tabela = props => {
         </div>
     </section>
     </main>
+    { verificarModal 
+      ? <Duration time={duracao}/>
+      : ""
+    }
+    </>
   )
 }
 

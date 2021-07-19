@@ -2,13 +2,13 @@ import Style from './style.module.scss';
 import { useState } from 'react';
 import { verificarCategoria, calcularImc } from '../../utils/imc';
 
+import { MdAddCircleOutline } from "react-icons/md";
 const init = {nome: "", peso: "", altura: ""}
 const Form = (props) => {
   const [listForm, setlistForm ] = useState(init);
   const [valueId, setValueId] = useState(0);
 
 function test(event){
-  console.log(event.target.value)
   setlistForm({
     ...listForm, 
     [event.target.name]: event.target.name === 'nome' && event.target.value 
@@ -18,6 +18,25 @@ function test(event){
     id: valueId});
 }
 
+async function recuperarApi(){
+  const dados = await fetch('https://gerador-nomes.herokuapp.com/apelidos/25')
+  let response = await dados.json();
+  console.log(response)
+}
+function eventoClick(){
+  recuperarApi();
+  let newList = calcularImc(
+    {
+      nome: "Beatris",
+      peso: Math.floor(Math.random() * 55 + 40),
+      altura: parseFloat((Math.random() * 2.46 + 1).toFixed(2)),
+    })
+  let listComplet =  verificarCategoria(newList);
+  setlistForm({...listComplet, id: valueId})
+  setValueId(valueId + 1);
+  props.setFormListTest(listComplet);
+  setlistForm(init)
+}
 function mudarClass(event){
   event.preventDefault();
   event.target.parentElement.classList.add(`${Style.ativado}`);
@@ -39,15 +58,26 @@ async function handleSubmit(event) {
       setlistForm({...listComplet, id: valueId})
       setValueId(valueId + 1);
       props.setFormListTest(listComplet);
+      console.log(listComplet);
       setlistForm(init)
   }
   
 }
   return (
     <div className={Style.containerPrincipal}>
+
+        
+
+      
       <section className={Style.container}>
+      
         <div className={Style.formDiv}>
+        <span  className={Style.iconAdd} >
+        <MdAddCircleOutline onClick={eventoClick}/>
+        </span>
+        
           <form className={Style.form}>
+          
             <span>
               <label htmlFor="name" className={Style.formLabel}>Nome</label>
               <input type="text" id="name" onBlur={removerClass} onFocus={ mudarClass } placeholder="Exemplo: Gabriel" name="nome" value={listForm.nome} onChange={ test } />
