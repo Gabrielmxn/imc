@@ -35,7 +35,6 @@ const Form = (props) => {
       headers: {
         'Content-Type': 'application/json',
         'API-Key': '22576f0420b22daafc6589047ad91556',
-        'Access-Control-Allow-Origin': 'http://localhost:3000'
       }
     })
     let response = await dados.json();
