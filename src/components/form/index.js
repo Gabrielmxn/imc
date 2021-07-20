@@ -1,10 +1,18 @@
 import Style from './style.module.scss';
 import { useState } from 'react';
 import { verificarCategoria, calcularImc } from '../../utils/imc';
-
+import  api  from '../../api';
 
 import { MdAddCircleOutline } from "react-icons/md";
 
+async function recuperarApi(){
+  const response = await api.get('?api_key=22576f0420b22daafc6589047ad91556&endpoint=generate&country_code=DE&results=1',{
+    mode: 'CORS',
+    crossdomain: true,
+  headers: {"Access-Control-Allow-Origin": "*"} });
+  console.log(response)
+  return response;
+}
 
 const init = {
   nome: "", 
@@ -27,26 +35,7 @@ const Form = (props) => {
       id: valueId});
   }
 
-  async function recuperarApi(){
-    const dados = await fetch(
-      'https://api.parser.name/?api_key=22576f0420b22daafc6589047ad91556&endpoint=generate&country_code=DE&results=1',
-    {
-       
-      method: 'GET',
-      cache: 'default', 
-      headers: {
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-        "Access-Control-Allow-Origin": "*",
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-        'Connection': 'keep-alive',
-        'Content-Type': 'application/json',
-        'API-Key': '22576f0420b22daafc6589047ad91556',
-  
-      }
-    })
-    let response = await dados.json();
-    console.log(response)
-  }
+ 
   async function eventoClick(){
     await recuperarApi();
     let newList = calcularImc(
@@ -71,7 +60,7 @@ const Form = (props) => {
     event.preventDefault();
     event.target.parentElement.classList.remove(`${Style.ativado}`);
   }
-
+  
 
   async function handleSubmit(event) {
     event.preventDefault();
