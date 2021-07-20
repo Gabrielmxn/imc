@@ -28,7 +28,8 @@ const Form = (props) => {
   }
 
   async function recuperarApi(){
-    const dados = await fetch('http://names.drycodes.com/10?nameOptions=all',
+    const dados = await fetch(
+      'https://api.parser.name/?api_key=22576f0420b22daafc6589047ad91556&endpoint=generate&country_code=DE&results=1',
     {
  
       method: "GET",
