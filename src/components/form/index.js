@@ -2,57 +2,22 @@ import Style from './style.module.scss';
 import { useState } from 'react';
 import { verificarCategoria, calcularImc } from '../../utils/imc';
 
-<<<<<<< HEAD
+
 import { MdAddCircleOutline } from "react-icons/md";
-const init = {nome: "", peso: "", altura: ""}
-=======
+
+
 const init = {
   nome: "", 
   peso: "",
   altura: ""
 }
->>>>>>> 7ea948d26a7033df06774a46aacb2f56b643f796
+
 const Form = (props) => {
   const [listForm, setListForm ] = useState(init);
   const [valueId, setValueId] = useState(0);
 
-<<<<<<< HEAD
-function test(event){
-  setlistForm({
-    ...listForm, 
-    [event.target.name]: event.target.name === 'nome' && event.target.value 
-    ? event.target.value[0].toUpperCase()  +  event.target.value.substr(1).toLowerCase()
-    :  event.target.value >= 0 || event.target.value !== "" 
-    ? event.target.value : event.target.value,
-    id: valueId});
-}
 
-async function recuperarApi(){
-  const dados = await fetch('https://gerador-nomes.herokuapp.com/apelidos/25')
-  let response = await dados.json();
-  console.log(response)
-}
-function eventoClick(){
-  recuperarApi();
-  let newList = calcularImc(
-    {
-      nome: "Beatris",
-      peso: Math.floor(Math.random() * 55 + 40),
-      altura: parseFloat((Math.random() * 2.46 + 1).toFixed(2)),
-    })
-  let listComplet =  verificarCategoria(newList);
-  setlistForm({...listComplet, id: valueId})
-  setValueId(valueId + 1);
-  props.setFormListTest(listComplet);
-  setlistForm(init)
-}
-function mudarClass(event){
-  event.preventDefault();
-  event.target.parentElement.classList.add(`${Style.ativado}`);
-}
-=======
   function test(event){
-    console.log(event.target.value)
     setListForm({
       ...listForm, 
       [event.target.name]: event.target.name === 'nome' && event.target.value 
@@ -62,32 +27,46 @@ function mudarClass(event){
       id: valueId});
   }
 
+  async function recuperarApi(){
+    const dados = await fetch('http://names.drycodes.com/10?nameOptions=all',
+    {
+ 
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': '22576f0420b22daafc6589047ad91556',
+        'Access-Control-Allow-Origin': 'http://localhost:3000'
+      }
+    })
+    let response = await dados.json();
+    console.log(response)
+  }
+  async function eventoClick(){
+    await recuperarApi();
+    let newList = calcularImc(
+      {
+        nome: "Beatris",
+        peso: Math.floor(Math.random() * 55 + 40),
+        altura: parseFloat((Math.random() * 2.46 + 1).toFixed(2)),
+      })
+    let listComplet =  verificarCategoria(newList);
+    setListForm({...listComplet, id: valueId})
+    setValueId(valueId + 1);
+    props.setFormListTest(listComplet);
+    setListForm(init)
+  }
   function mudarClass(event){
     event.preventDefault();
     event.target.parentElement.classList.add(`${Style.ativado}`);
   }
->>>>>>> 7ea948d26a7033df06774a46aacb2f56b643f796
+
 
   function removerClass(event){
     event.preventDefault();
     event.target.parentElement.classList.remove(`${Style.ativado}`);
   }
 
-<<<<<<< HEAD
-async function handleSubmit(event) {
-  event.preventDefault();
-  let formw = event.target.parentNode.querySelectorAll('form input')
-  let newList = Array.prototype.slice.call(formw);
-  
-  if(newList.every(element => element.value !== "")){
-      let newList = calcularImc(listForm)
-      let listComplet =  verificarCategoria(newList);
-      setlistForm({...listComplet, id: valueId})
-      setValueId(valueId + 1);
-      props.setFormListTest(listComplet);
-      console.log(listComplet);
-      setlistForm(init)
-=======
+
   async function handleSubmit(event) {
     event.preventDefault();
     let formw = event.target.parentNode.querySelectorAll('form input')
@@ -99,11 +78,11 @@ async function handleSubmit(event) {
         setListForm({...listComplet, id: valueId})
         setValueId(valueId + 1);
         props.setFormListTest(listComplet);
+        console.log(listComplet);
         setListForm(init)
     }
-    
->>>>>>> 7ea948d26a7033df06774a46aacb2f56b643f796
   }
+
   return (
     <div className={Style.containerPrincipal}>
 
