@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const process = require('process');
+// const process = require('process');
 
 const api = axios.create({
-    baseURL: process.env.REACT_BASEURL,
+    baseURL: 'https://randomuser.me/api/',
     
 });
 

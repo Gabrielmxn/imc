@@ -6,7 +6,7 @@ import  api  from '../../api';
 import { MdAddCircleOutline } from "react-icons/md";
 
 async function recuperarApi(){
-  const response = await api.get('/randomNames')
+  const response = await api.get('')
   console.log(response)
   return response.data.results[0].name.first;  
 }
