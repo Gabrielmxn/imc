@@ -45,6 +45,12 @@ const Form = (props) => {
     setValueId(valueId + 1);
     props.setFormListTest(listComplet);
     setListForm(init)
+    let message = document.querySelector(`.${Style.message}`);
+    message.classList.add(`${Style.sucess}`);
+
+    setTimeout(() => {
+      message.classList.remove(`${Style.sucess}`);
+    }, 2000)
   }
   function mudarClass(event){
     event.preventDefault();
@@ -80,7 +86,10 @@ const Form = (props) => {
       <section className={Style.container}>
         <div className={Style.formDiv}>
         <span  className={Style.iconAdd} >
-        <MdAddCircleOutline onClick={eventoClick}/>
+        <MdAddCircleOutline title="Adicionar uma pessoa aleatória" onClick={eventoClick}/>
+        </span>
+        <span className={Style.message}>
+          Adicionado com sucesso!
         </span>
           <form className={Style.form}>
             <span>

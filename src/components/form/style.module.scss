@@ -34,6 +34,22 @@ $color-white: #FFFFFF;
           cursor: pointer;
         }
       }
+
+      .message{
+        position: absolute;
+        display: none;
+        color: green;
+        margin-left: auto;
+        top: 10px;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        
+        &.sucess{
+          display: block;
+        }
+      }
      
     }
 
