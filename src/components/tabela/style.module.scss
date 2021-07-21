@@ -52,7 +52,7 @@
     align-items: center;
     text-align: center;
     border-collapse: separate;
-    border-spacing: 0 10px;
+    
    
     thead tr th {
       padding: 10px;
@@ -76,15 +76,17 @@
       tr {
         border-radius: 5px;
         box-shadow: 0 0 1px 0.5px black;
+        
          td{
           background-color: #fff;
           color: black;
+          padding: 10px;
          }
         
         td.test {
           display: flex;
           text-align: center;  
-          padding: 20px;
+          padding: 10px 0;
           svg{
             flex: 1;
             color: rgba(0,0,0,0.5);
@@ -108,7 +110,7 @@
         
       }
       th {
-        width: 160px;
+        width: 130px;
       }
     }
 
