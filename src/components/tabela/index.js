@@ -16,22 +16,23 @@ const Tabela = props => {
   const [order, setOrder] = useState('sortByHeight');
   const [duracao, setDuracao] = useState(0)
   const [verificarModal, setVerificarModal] = useState(false)
+  
   function methodOrdenacao(e){
     setMethod(e.target.value)
     const newArrayOrder = methodWithOrder(listTest, method, order);
     setListTest(newArrayOrder);
   }
+
   function orderOrdenacao(e){
     setOrder(e.target.value)
     let inicio = Date.now();
     const newArrayOrder = methodWithOrder(listTest, method, order);
     let duration = Date.now() - inicio;
     setDuracao(duration);
-    console.log(duration);
     setListTest(newArrayOrder);
   }
+
   async function orderT(){
-    console.log("aqui3")
     const variavel = await methodWithOrder(listTest, method, order)
   }
 
@@ -44,7 +45,6 @@ const Tabela = props => {
         let newList = [];
         newList.push(listPeople);
         setListTest([...listTest, ...newList])
-        console.log(listTest);
       }
      
     }

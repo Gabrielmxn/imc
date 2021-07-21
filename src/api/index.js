@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const process = require('process');
+
 const api = axios.create({
-    baseURL: 'https://api.parser.name/'
+    baseURL: process.env.REACT_BASEURL,
+    
 });
 
 export default api;

@@ -1,7 +1,6 @@
 const orderWith = {
 
   sortByHeight: (tamanho, list) => {
-    console.log(list);
     for(let i = 0; i < tamanho; i++){
       let menor = i;
       for(let j = i + 1; j < tamanho; j++){
@@ -17,7 +16,6 @@ const orderWith = {
     return list;
   },
   sortByWeight: (tamanho, list) => {
-    console.log(list);
     for(let i = 0; i < tamanho; i++){
       let menor = i;
       for(let j = i + 1; j < tamanho; j++){
@@ -33,7 +31,6 @@ const orderWith = {
     return list;
   },
   sortByName: (tamanho, list) => {
-    console.log(list);
     for(let i = 0; i < tamanho; i++){
       let menor = i;
       for(let j = i + 1; j < tamanho; j++){
@@ -49,7 +46,6 @@ const orderWith = {
     return list;
   },
   sortByImc: (tamanho, list) => {
-    console.log(list);
     for(let i = 0; i < tamanho; i++){
       let menor = i;
       for(let j = i + 1; j < tamanho; j++){
@@ -65,7 +61,6 @@ const orderWith = {
     return list;
   },
   sortByCategory: (tamanho, list) => {
-    console.log(list);
     for(let i = 0; i < tamanho; i++){
       let menor = i;
       for(let j = i + 1; j < tamanho; j++){

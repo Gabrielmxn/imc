@@ -6,12 +6,8 @@ import  api  from '../../api';
 import { MdAddCircleOutline } from "react-icons/md";
 
 async function recuperarApi(){
-  const response = await api.get('?api_key=22576f0420b22daafc6589047ad91556&endpoint=generate&country_code=DE&results=1',{
-    mode: 'CORS',
-    crossdomain: true,
-  headers: {"Access-Control-Allow-Origin": "*"} });
-  console.log(response)
-  return response;
+  const response = await api.get('/randomNames')
+  return response.data.results[0].name.first;  
 }
 
 const init = {
@@ -23,7 +19,6 @@ const init = {
 const Form = (props) => {
   const [listForm, setListForm ] = useState(init);
   const [valueId, setValueId] = useState(0);
-
 
   function test(event){
     setListForm({
@@ -37,15 +32,15 @@ const Form = (props) => {
 
  
   async function eventoClick(){
-    await recuperarApi();
+    const nameRandom =  await recuperarApi();
     let newList = calcularImc(
       {
-        nome: "Beatris",
+        nome: nameRandom,
         peso: Math.floor(Math.random() * 55 + 40),
-        altura: parseFloat((Math.random() * 2.46 + 1).toFixed(2)),
+        altura: parseFloat((Math.random() * 1 + 1.10).toFixed(2)),
+        id: valueId
       })
     let listComplet =  verificarCategoria(newList);
-    setListForm({...listComplet, id: valueId})
     setValueId(valueId + 1);
     props.setFormListTest(listComplet);
     setListForm(init)
@@ -54,7 +49,6 @@ const Form = (props) => {
     event.preventDefault();
     event.target.parentElement.classList.add(`${Style.ativado}`);
   }
-
 
   function removerClass(event){
     event.preventDefault();
@@ -70,6 +64,8 @@ const Form = (props) => {
     if(newList.every(element => element.value !== "")){
         let newList = calcularImc(listForm)
         let listComplet =  verificarCategoria(newList);
+
+        console.log(listComplet);
         setListForm({...listComplet, id: valueId})
         setValueId(valueId + 1);
         props.setFormListTest(listComplet);
@@ -80,19 +76,12 @@ const Form = (props) => {
 
   return (
     <div className={Style.containerPrincipal}>
-
-        
-
-      
       <section className={Style.container}>
-      
         <div className={Style.formDiv}>
         <span  className={Style.iconAdd} >
         <MdAddCircleOutline onClick={eventoClick}/>
         </span>
-        
           <form className={Style.form}>
-          
             <span>
               <label htmlFor="name" className={Style.formLabel}>Nome</label>
               <input type="text" id="name" onBlur={removerClass} onFocus={ mudarClass } placeholder="Exemplo: Gabriel" name="nome" value={listForm.nome} onChange={ test } />
@@ -105,7 +94,6 @@ const Form = (props) => {
               <label htmlFor="height" className={Style.formLabel}>Altura</label>
               <input type="number" id="height" onBlur={removerClass} onFocus={ mudarClass }  placeholder="Exemplo: 1.69" onChange={ test } name="altura" value={listForm.altura} />
             </span>
-           
             <button onClick={handleSubmit}>Enviar</button>
           </form>
         </div>
