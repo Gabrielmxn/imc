@@ -40,7 +40,7 @@ const Tabela = props => {
   useEffect( ()  => {
     const setValue =  () => {
       const { listPeople } = props;
-      
+      console.log(props)
       if(listPeople){
         let newList = [];
         newList.push(listPeople);

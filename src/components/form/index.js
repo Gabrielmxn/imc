@@ -33,21 +33,28 @@ const Form = (props) => {
 
  
   async function eventoClick(){
-    const nameRandom =  await recuperarApi();
-    let newList = calcularImc(
-      {
-        nome: nameRandom,
-        peso: Math.floor(Math.random() * 55 + 40),
-        altura: parseFloat((Math.random() * 1 + 1.10).toFixed(2)),
-        id: valueId
-      })
-    let listComplet =  verificarCategoria(newList);
-    setValueId(valueId + 1);
-    props.setFormListTest(listComplet);
-    setListForm(init)
+    let iD = valueId;
+    for(let i = 0; i < 20; i++){
+      const nameRandom =  await recuperarApi();
+      iD += 1;
+      let newList = calcularImc(
+        {
+          nome: nameRandom,
+          peso: Math.floor(Math.random() * 55 + 40),
+          altura: parseFloat((Math.random() * 1 + 1.10).toFixed(2)),
+          id: iD
+        })
+      let listComplet =  verificarCategoria(newList);
+      
+      
+      props.setFormListTest(listComplet);
+      setListForm(init)
+    
+      
+    }
+    setValueId(iD);
     let message = document.querySelector(`.${Style.message}`);
-    message.classList.add(`${Style.sucess}`);
-
+      message.classList.add(`${Style.sucess}`);
     setTimeout(() => {
       message.classList.remove(`${Style.sucess}`);
     }, 2000)
@@ -86,7 +93,7 @@ const Form = (props) => {
       <section className={Style.container}>
         <div className={Style.formDiv}>
         <span  className={Style.iconAdd} >
-        <MdAddCircleOutline title="Adicionar uma pessoa aleatória" onClick={eventoClick}/>
+        <MdAddCircleOutline title="Adicionar 20 pessoas aleatórias" onClick={eventoClick}/>
         </span>
         <span className={Style.message}>
           Adicionado com sucesso!

@@ -18,6 +18,11 @@ const isMethod = {
 export default function methodWithOrder(list, method, order){
   //chamando a função de ordenação escolhida 
   //e o tipo de ordenação (name, height, weight, imc, category)
-  return isMethod[method](list, order);
+  
+  var antes = Date.now();
+  let array = isMethod[method](list, order);
+  var duracao = Date.now() - antes;
+  console.log(duracao);
+  return array;
 }
 

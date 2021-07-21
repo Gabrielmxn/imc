@@ -31,6 +31,8 @@ const orderWith = {
     return list;
   },
   sortByName: (tamanho, list) => {
+   
+
     for(let i = 0; i < tamanho; i++){
       let menor = i;
       for(let j = i + 1; j < tamanho; j++){
