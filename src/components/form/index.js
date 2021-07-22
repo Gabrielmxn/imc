@@ -2,6 +2,7 @@ import Style from './style.module.scss';
 import { useState } from 'react';
 import { verificarCategoria, calcularImc } from '../../utils/imc';
 import  api  from '../../api';
+//import ImageBall from '../../../public/assets/Ball-0.8s-200px.gif';
 
 import { MdAddCircleOutline } from "react-icons/md";
 
@@ -33,6 +34,8 @@ const Form = (props) => {
 
  
   async function eventoClick(){
+    let message = document.querySelector(`.${Style.message}`);
+    message.classList.add(`${Style.sucess}`);
     let iD = valueId;
     for(let i = 0; i < 20; i++){
       const nameRandom =  await recuperarApi();
@@ -53,11 +56,9 @@ const Form = (props) => {
       
     }
     setValueId(iD);
-    let message = document.querySelector(`.${Style.message}`);
-      message.classList.add(`${Style.sucess}`);
-    setTimeout(() => {
-      message.classList.remove(`${Style.sucess}`);
-    }, 2000)
+
+    message.classList.remove(`${Style.sucess}`);
+    
   }
   function mudarClass(event){
     event.preventDefault();
@@ -96,7 +97,7 @@ const Form = (props) => {
         <MdAddCircleOutline title="Adicionar 20 pessoas aleatórias" onClick={eventoClick}/>
         </span>
         <span className={Style.message}>
-          Adicionado com sucesso!
+         <img src="/assets/Rolling-1s-200px.gif" alt="" />
         </span>
           <form className={Style.form}>
             <span>

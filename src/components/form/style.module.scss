@@ -4,8 +4,6 @@ $color-white: #FFFFFF;
   background-color: #1B2431;
   width: 100%;
 
- 
-
   .container {
     background-color: #1E488F;
     width: 100%;
@@ -40,17 +38,20 @@ $color-white: #FFFFFF;
         display: none;
         color: green;
         margin-left: auto;
-        top: 10px;
+        top: 0px;
         margin-right: auto;
         left: 0;
         right: 0;
         text-align: center;
+   
         
+        img {
+          width: 80px;
+        }
         &.sucess{
           display: block;
         }
       }
-     
     }
 
     .form {
@@ -70,10 +71,11 @@ $color-white: #FFFFFF;
           left: 0;
           bottom: 0;
           background-color: #1E488F;
-          transition: width 0.6s ease-in-out;
-          
+          transition: width 0.6s ease-in-out; 
         }
+
         &.ativado{
+
           &::after{
             position: absolute;
             content: "";
@@ -84,6 +86,7 @@ $color-white: #FFFFFF;
             background-color: #1E488F;
           } 
         }
+
         .formLabel{
           display: block;
           text-align: left;
@@ -93,8 +96,7 @@ $color-white: #FFFFFF;
         }
        
         input[type=number]::-webkit-inner-spin-button { 
-          -webkit-appearance: none;
-          
+          -webkit-appearance: none; 
         }
         input[type="text"], input[type='number'] {
           padding: 10px 0px 10px 10px;
