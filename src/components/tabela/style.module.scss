@@ -9,57 +9,88 @@
   margin-bottom: 50px;
   text-align: center;
   border-radius: 5px;
-  background-color: #f0f4f4;
-  
+  background-color: #fff;
+
+  .ativado{
+    background-color: #E1E1E6;
+  }
+
   .duration {
     position: absolute;
     top: 0;
     right: 0;
     margin: 10px 10px 0 0 ;
   }
+
   .option{
     display: flex;
-    background-color: #f0f4f4;
-    padding: 10px 0px;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     width: 100%;
     border-radius: 5px 5px 0 0;
-    gap: 20px;
+    cursor: pointer;
+
+    div {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 400px;
+      border-radius: 5px 5px 0 0;
+      cursor: pointer;
+    }
+    .title{
+      display: block;
+      flex: 10;
+    }
+
+    .methodsOrder{
+      flex: 1;
+      padding: 2px;
+      box-shadow: 0 0 0.2px 0.5px #1E488F;
+      border-radius: 5px;
+      
+     
+      &:hover{
+        background-color: #E1E1E6;
+       
+      }
+      
+    }
+
+    .disable{
+      display: none;
+    }
     div:first-child {
       margin-left: 20px;
     }
 
-    select {
-      outline: none;
-      
-      option {
-        padding: 0 auto;
-        text-align: center;
-      }
-   }
 
-    span {
-      margin-right: 8px;
-    }
   
   }
 
   .tabela {
     width: 100%;
     border-spacing: 0 0.5rem;
-    background-color: #f0f4f4;
     padding: 10px;
     border-radius: 0px 0px 5px 5px;
     align-items: center;
     text-align: center;
     border-collapse: separate;
-    
-   
     thead tr th {
-      padding: 10px;
+      
+      padding: 10px 0;
+      transition: background 0.5s ease-in-out;
+      &:hover{
+        background-color: #E1E1E6;
+        cursor: pointer;
+      }
     }
 
     tbody {
-    
       tr td:first-child { 
         border-top-left-radius: 5px; 
       }
@@ -75,14 +106,18 @@
       }
       tr {
         border-radius: 5px;
-        box-shadow: 0 0 1px 0.5px black;
+        box-shadow: 0 0 1px 0.5px #1E488F;
         
-         td{
-          background-color: #fff;
-          color: black;
-          padding: 10px;
+        &:hover{
+          box-shadow: 0 0 4px 0.5px #1E488F;
+          
+        }       
+          td{
+            background-color: #fff;
+            color: black;
+            padding: 10px;
          }
-        
+
         td.test {
           display: flex;
           text-align: center;  
@@ -104,6 +139,7 @@
     .container {
       flex: 1;
       overflow: auto;
+      width: 100%;
 
       .tabela {
         table-layout: fixed;

@@ -17,14 +17,24 @@ const Tabela = props => {
   const [duracao, setDuracao] = useState(0)
   const [verificarModal, setVerificarModal] = useState(false)
   
-  function methodOrdenacao(e){
-    setMethod(e.target.value)
+  function methodOrdenacao(event, methods){
+    let optionDom = document.querySelectorAll(`.${Style.methodsOrder}`)
+    optionDom.forEach(results => {
+      results.classList.remove(`${Style.ativado}`)
+    })
+    event.target.classList.add(`${Style.ativado}`)
+    setMethod(methods)
     const newArrayOrder = methodWithOrder(listTest, method, order);
     setListTest(newArrayOrder);
   }
 
-  function orderOrdenacao(e){
-    setOrder(e.target.value)
+  function orderOrdenacao(event, methods){
+    let optionDom = document.querySelectorAll('.trOrder th')
+    optionDom.forEach(results => {
+      results.classList.remove(`${Style.ativado}`)
+    })
+    event.target.classList.add(`${Style.ativado}`)
+    setOrder(methods)
     let inicio = Date.now();
     const newArrayOrder = methodWithOrder(listTest, method, order);
     let duration = Date.now() - inicio;
@@ -61,42 +71,45 @@ const Tabela = props => {
     <main className={Style.container2}>
     <section className={Style.container}>
         <div className={Style.table}>
+        <span className={Style.title}>Tipo de método: </span>
           <div className={Style.option}>
             <div>
-              <span>Tipo de método</span>
-              <select  
-                onChange={methodOrdenacao} 
-                name="select"
-                value={method}>
-                <option value="selectionSort">Selection Sort</option>
-                <option value="insertionSort">Insertion Sort</option>
-                <option value="quickSort" disabled>Quick sort</option>
-                <option value="mergeSort" disabled>Merge sort</option>
-                <option value="bubbleSort" disabled>Bubble sort</option>
-              </select>
+            <span 
+                className={Style.methodsOrder}
+                onClick={
+                  (event) => methodOrdenacao(event, 'selectionSort') 
+                }>
+                Selection
+              </span>
+              <span 
+                className={Style.methodsOrder}
+                onClick={
+                  (event) => methodOrdenacao(event, 'insertionSort') 
+                }>
+                Insertion
+              </span>
+              <span 
+                className={`${Style.methodsOrder} ${Style.disable}`}
+                disable
+                >
+                Quick
+              </span>
+              <span 
+                 className={`${Style.methodsOrder} ${Style.disable}`}>Merge</span>
+              <span 
+                 className={`${Style.methodsOrder} ${Style.disable}`}>Bubble</span>
+            
             </div>
-            <div>
-              <span>Ordenação</span>
-              <select 
-                onChange={orderOrdenacao} 
-                name="select" 
-                value={order}>
-                <option value="sortByName">Nome</option>
-                <option value="sortByWeight">Peso</option>
-                <option value="sortByHeight">Altura</option>
-                <option value="sortByImc">IMC</option>
-                <option value="sortByCategory">Categoria</option>
-              </select>
-            </div>
+              
           </div>
           <table className={Style.tabela}>
             <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Peso</th>
-                <th>Altura</th>
-                <th>IMC</th>
-                <th>Categoria</th>
+              <tr className="trOrder">
+                <th onClick={(event) => orderOrdenacao(event, 'sortByName')}>Nome</th>
+                <th onClick={(event) => orderOrdenacao(event, 'sortByWeight')}>Peso</th>
+                <th onClick={(event) => orderOrdenacao(event, 'sortByHeight')}>Altura</th>
+                <th onClick={(event) => orderOrdenacao(event, 'sortByImc')}>IMC</th>
+                <th onClick={(event) => orderOrdenacao(event, 'sortByCategory')}>Categoria</th>
                 <th></th>
               </tr>
             </thead>
