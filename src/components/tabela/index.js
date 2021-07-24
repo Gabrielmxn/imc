@@ -13,7 +13,7 @@ import Duration from '../duration';
 const Tabela = props => {
   const [listTest, setListTest] = useState([]);
   const [method, setMethod] = useState('selectionSort');
-  const [order, setOrder] = useState('sortByHeight');
+  const [order, setOrder] = useState('sortByName');
   const [duracao, setDuracao] = useState(0)
   const [verificarModal, setVerificarModal] = useState(false)
   
@@ -75,7 +75,7 @@ const Tabela = props => {
           <div className={Style.option}>
             <div>
             <span 
-                className={Style.methodsOrder}
+                className={`${Style.methodsOrder} ${Style.ativado}`}
                 onClick={
                   (event) => methodOrdenacao(event, 'selectionSort') 
                 }>
@@ -105,7 +105,7 @@ const Tabela = props => {
           <table className={Style.tabela}>
             <thead>
               <tr className="trOrder">
-                <th onClick={(event) => orderOrdenacao(event, 'sortByName')}>Nome</th>
+                <th className={Style.ativado} onClick={(event) => orderOrdenacao(event, 'sortByName')}>Nome</th>
                 <th onClick={(event) => orderOrdenacao(event, 'sortByWeight')}>Peso</th>
                 <th onClick={(event) => orderOrdenacao(event, 'sortByHeight')}>Altura</th>
                 <th onClick={(event) => orderOrdenacao(event, 'sortByImc')}>IMC</th>
