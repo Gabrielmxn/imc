@@ -37,7 +37,7 @@ const Form = (props) => {
     let message = document.querySelector(`.${Style.message}`);
     message.classList.add(`${Style.sucess}`);
     let iD = valueId;
-    for(let i = 0; i < 20; i++){
+    for(let i = 0; i < 300; i++){
       const nameRandom =  await recuperarApi();
       iD += 1;
       let newList = calcularImc(
