@@ -1,0 +1,23 @@
+.message{
+    position: absolute;
+    display: none;
+    color: green;
+    background: rgba(0,0,0,0.4);
+    margin-left: auto;
+    top: 0px;
+    height: 100vh;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    
+    img {
+      width: 64px;
+    }
+    &.sucess{
+      display: flex;
+    }
+  }

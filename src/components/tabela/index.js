@@ -63,9 +63,9 @@ const Tabela = props => {
    
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props])
+  }, [props.listPeople])
   
-  orderT();
+ console.log(listTest)
   return (
     <>
     <main className={Style.container2}>

@@ -1,5 +1,6 @@
 import Style from './style.module.scss';
 import { useState } from 'react';
+
 import { verificarCategoria, calcularImc } from '../../utils/imc';
 import  api  from '../../api';
 //import ImageBall from '../../../public/assets/Ball-0.8s-200px.gif';
@@ -21,6 +22,7 @@ const init = {
 const Form = (props) => {
   const [listForm, setListForm ] = useState(init);
   const [valueId, setValueId] = useState(0);
+  
 
   function test(event){
     setListForm({
@@ -34,12 +36,12 @@ const Form = (props) => {
 
  
   async function eventoClick(){
-    let message = document.querySelector(`.${Style.message}`);
-    message.classList.add(`${Style.sucess}`);
+    props.setViewComponet(true);
+   
     let iD = valueId;
     for(let i = 0; i < 300; i++){
       const nameRandom =  await recuperarApi();
-      iD += 1;
+      
       let newList = calcularImc(
         {
           nome: nameRandom,
@@ -52,12 +54,12 @@ const Form = (props) => {
       
       props.setFormListTest(listComplet);
       setListForm(init)
-    
-      
+      console.log(iD)
+      iD += 1;
     }
     setValueId(iD);
 
-    message.classList.remove(`${Style.sucess}`);
+    props.setViewComponet(false);
     
   }
   function mudarClass(event){
@@ -90,33 +92,33 @@ const Form = (props) => {
   }
 
   return (
-    <div className={Style.containerPrincipal}>
-      <section className={Style.container}>
-        <div className={Style.formDiv}>
-        <span  className={Style.iconAdd} >
-        <MdAddCircleOutline title="Adicionar 20 pessoas aleatórias" onClick={eventoClick}/>
-        </span>
-        <span className={Style.message}>
-         <img src="/assets/Rolling-1s-200px.gif" alt="" />
-        </span>
-          <form className={Style.form}>
-            <span>
-              <label htmlFor="name" className={Style.formLabel}>Nome</label>
-              <input type="text" id="name" onBlur={removerClass} onFocus={ mudarClass } placeholder="Exemplo: Gabriel" name="nome" value={listForm.nome} onChange={ test } />
-            </span>
-            <span>
-              <label htmlFor="weight" className={Style.formLabel}>Peso</label>
-              <input type="number" id="weight" onBlur={removerClass} onFocus={ mudarClass }  placeholder="Exemplo: 55.4" onChange={ test } name="peso" value={listForm.peso} />
-            </span>
-            <span>
-              <label htmlFor="height" className={Style.formLabel}>Altura</label>
-              <input type="number" id="height" onBlur={removerClass} onFocus={ mudarClass }  placeholder="Exemplo: 1.69" onChange={ test } name="altura" value={listForm.altura} />
-            </span>
-            <button onClick={handleSubmit}>Enviar</button>
-          </form>
-        </div>
-      </section>
-    </div> 
+    <> 
+      <div className={Style.containerPrincipal}>
+        <section className={Style.container}>
+          <div className={Style.formDiv}>
+          <span  className={Style.iconAdd} >
+          <MdAddCircleOutline title="Adicionar 20 pessoas aleatórias" onClick={eventoClick}/>
+          </span>
+          
+            <form className={Style.form}>
+              <span>
+                <label htmlFor="name" className={Style.formLabel}>Nome</label>
+                <input type="text" id="name" onBlur={removerClass} onFocus={ mudarClass } placeholder="Exemplo: Gabriel" name="nome" value={listForm.nome} onChange={ test } />
+              </span>
+              <span>
+                <label htmlFor="weight" className={Style.formLabel}>Peso</label>
+                <input type="number" id="weight" onBlur={removerClass} onFocus={ mudarClass }  placeholder="Exemplo: 55.4" onChange={ test } name="peso" value={listForm.peso} />
+              </span>
+              <span>
+                <label htmlFor="height" className={Style.formLabel}>Altura</label>
+                <input type="number" id="height" onBlur={removerClass} onFocus={ mudarClass }  placeholder="Exemplo: 1.69" onChange={ test } name="altura" value={listForm.altura} />
+              </span>
+              <button onClick={handleSubmit}>Enviar</button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </> 
   )
 }
 

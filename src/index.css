@@ -10,6 +10,9 @@ html, body, #root {
   font-family: 'Baloo 2', cursive;
 }
 
+body {
+  position: relative;
+}
 
 #root{
   overflow-x: hidden;
