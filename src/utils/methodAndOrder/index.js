@@ -1,8 +1,8 @@
 import orderSelectionSort from './selectionSort'
 import orderBubbleSort from './bubbleSort'
 import orderInsertionSort from './insertionSort'
-import orderMergeSort from './insertionSort'
-import orderQuickSort from './insertionSort'
+import orderMergeSort from './mergeSort'
+import orderQuickSort from './quickSort'
 
 const isMethod = {
   selectionSort: orderSelectionSort,

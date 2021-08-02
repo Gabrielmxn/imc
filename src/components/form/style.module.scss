@@ -33,25 +33,7 @@ $color-white: #FFFFFF;
         }
       }
 
-      .message{
-        position: absolute;
-        display: none;
-        color: green;
-        margin-left: auto;
-        top: 0px;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-        text-align: center;
-   
-        
-        img {
-          width: 80px;
-        }
-        &.sucess{
-          display: block;
-        }
-      }
+    
     }
 
     .form {

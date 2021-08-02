@@ -1,9 +1,9 @@
-//import Header from '../components/header';
-import Form from '../components/form/';
 import { useState } from 'react';
-//import Footer from '../components/header';
+
+import Form from '../components/form';
 import Tabela from '../components/tabela';
 import Loading from '../components/loading';
+
 
 const Home = () => {
   const [formList, setFormList] = useState();

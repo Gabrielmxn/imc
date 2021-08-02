@@ -2,14 +2,13 @@ import Style from './style.module.scss';
 import { useState } from 'react';
 
 import { verificarCategoria, calcularImc } from '../../utils/imc';
-import  api  from '../../api';
-//import ImageBall from '../../../public/assets/Ball-0.8s-200px.gif';
+import  Api  from '../../api';
+
 
 import { MdAddCircleOutline } from "react-icons/md";
 
 async function recuperarApi(){
-  const response = await api.get('')
-  console.log(response)
+  const response = await Api.get('')
   return response.data.results[0].name.first;  
 }
 
@@ -39,7 +38,7 @@ const Form = (props) => {
     props.setViewComponet(true);
    
     let iD = valueId;
-    for(let i = 0; i < 300; i++){
+    for(let i = 0; i < 30; i++){
       const nameRandom =  await recuperarApi();
       
       let newList = calcularImc(
@@ -99,7 +98,6 @@ const Form = (props) => {
           <span  className={Style.iconAdd} >
           <MdAddCircleOutline title="Adicionar 20 pessoas aleatórias" onClick={eventoClick}/>
           </span>
-          
             <form className={Style.form}>
               <span>
                 <label htmlFor="name" className={Style.formLabel}>Nome</label>

@@ -5,8 +5,6 @@ import {
 
 import methodWithOrder from '../../utils/methodAndOrder'
 
-import { MdDeleteForever } from "react-icons/md";
-
 import Style from './style.module.scss';
 import Duration from '../duration';
 
@@ -24,19 +22,19 @@ const Tabela = props => {
     })
     event.target.classList.add(`${Style.ativado}`)
     setMethod(methods)
-    const newArrayOrder = methodWithOrder(listTest, method, order);
+    const newArrayOrder = methodWithOrder(listTest, methods, order);
     setListTest(newArrayOrder);
   }
 
-  function orderOrdenacao(event, methods){
+  function orderOrdenacao(event, orders){
     let optionDom = document.querySelectorAll('.trOrder th')
     optionDom.forEach(results => {
       results.classList.remove(`${Style.ativado}`)
     })
     event.target.classList.add(`${Style.ativado}`)
-    setOrder(methods)
+    setOrder(orders)
     let inicio = Date.now();
-    const newArrayOrder = methodWithOrder(listTest, method, order);
+    const newArrayOrder = methodWithOrder(listTest, method, orders);
     let duration = Date.now() - inicio;
     setDuracao(duration);
     setListTest(newArrayOrder);
@@ -50,7 +48,7 @@ const Tabela = props => {
   useEffect( ()  => {
     const setValue =  () => {
       const { listPeople } = props;
-      console.log(props)
+
       if(listPeople){
         let newList = [];
         newList.push(listPeople);
@@ -60,8 +58,8 @@ const Tabela = props => {
     }
 
     setValue();
-   
-
+    orderT();
+    console.log("aqui")
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.listPeople])
   
